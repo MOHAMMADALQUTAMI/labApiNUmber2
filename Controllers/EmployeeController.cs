@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using EmployeeApi.Models;
+using EmployeeApi.Models.Student;
 namespace EmployeeController.Controllers;
 [ApiController]
 [Route("[controller]/[action]")]
@@ -17,14 +18,16 @@ public List<Employee> Get(){
         
     
 [HttpPost(Name = "Employee Added")]
-public string Add(int id , string name , string lastName){
+public string Add(int id , string name , string lastName ){
     Employee employee = new Employee
     {
         Id = id,
         Name =name,
         LastName = lastName,
+        
 
     };
+    
     EmployeeDatabase.Add(employee);
 //    var a = EmployeeDatabase[10];
 
