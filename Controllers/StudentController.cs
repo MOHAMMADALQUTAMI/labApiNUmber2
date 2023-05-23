@@ -32,9 +32,18 @@ public string Add(int id , string title , string city ){
 
     return "Student Adeed" + " " + student.Title;
 }
-[HttpPut(Name = "Student Updated")]
-public string Update(Student student){
-    return $"Student Updated:{student.Id} {student.Title} {student.City}";
+[HttpPost(Name = "Student Updated")]
+
+    public string Update( int id ,string title,String city){
+     Student newstudent =new Student();
+     foreach(Student UpdateEmployee in StudentDatabase)
+     if (UpdateEmployee.Id == id)
+     newstudent =UpdateEmployee;
+     
+    newstudent.Id=id;
+    newstudent.Title=title;
+    newstudent.City=city;
+    return $"Student Updated:{newstudent.Id} {newstudent.Title} {newstudent.City}";
 }
 [HttpDelete(Name = "Student Deleted")]
 public string Delete(int id)

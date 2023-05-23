@@ -34,9 +34,36 @@ public string Add(int id , string name , string lastName ){
     return "Employee Adeed" + " " + employee.Name;
 }
 [HttpPut(Name = "Employee Updated")]
-public string Update(Employee employee){
-    return $"Employee Updated:{employee.Name} {employee.Id} {employee.LastName}";
-}
+ public string Update( int id ,string name,String lastname){
+     Employee newemployee =new Employee();
+     foreach(Employee UpdateEmployee in EmployeeDatabase)
+     if (UpdateEmployee.Id == id)
+     newemployee =UpdateEmployee;
+     
+    newemployee.Id=id;
+    newemployee.Name=name;
+    newemployee.LastName=lastname;
+    //  break;
+    //  {
+    //      id= newemployee.Id;
+    //     name = newemployee.Name;
+    //      lastName =newemployee.LastName;
+    
+    //  }
+    //  Employee employee = new Employee();
+    //     foreach( Employee UpdateEmployee in EmployeeDatabase) {
+    //         if( UpdateEmployee.Name==name){
+    //             employee =UpdateEmployee;
+    //                  employee.Update(newemployee);
+
+    //         } 
+    
+    // EmployeeDatabase.Add(newemployee);
+    // return $"updated {newemployee}";
+    return $"Updated {newemployee.Name}+{newemployee.Id}+{newemployee.LastName}";
+ }
+        
+        
 [HttpDelete(Name = "Employee Deleted")]
 public string Delete(int id)
 {
